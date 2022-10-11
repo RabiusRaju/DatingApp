@@ -59,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun uploadImage() {
-        //Config.showDialog(this)
+        Config.showDialog(this)
         val storageRef = FirebaseStorage.getInstance().getReference("profile")
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .child("profile.jpg")
@@ -70,11 +70,11 @@ class RegisterActivity : AppCompatActivity() {
                 storageRef.downloadUrl.addOnSuccessListener {
                     storeData(it)
                 }.addOnFailureListener {
-                    //Config.hideDialog()
+                    Config.hideDialog()
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }
             }.addOnFailureListener {
-                //Config.hideDialog()
+                Config.hideDialog()
                 Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
             }
     }
@@ -91,7 +91,7 @@ class RegisterActivity : AppCompatActivity() {
             .child(FirebaseAuth.getInstance().currentUser!!.phoneNumber!!)
             .setValue(data)
             .addOnCompleteListener {
-                //Config.hideDialog()
+                Config.hideDialog()
                 if (it.isSuccessful){
                     startActivity(Intent(this@RegisterActivity,MainActivity::class.java))
                     finish()

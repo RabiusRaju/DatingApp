@@ -4,12 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/gradient_shape.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/ic_undraw_forever.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/ic_undraw_hooked.xml" value="0.1405" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.34322916666666664" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/fragment_dating.xml" value="0.2817443351859769" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.2817443351859769" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2817443351859769" />
+        <entry key="app/src/main/res/layout/header_layout.xml" value="0.28088926891834115" />
+        <entry key="app/src/main/res/layout/item_user_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/loading_layout.xml" value="0.34322916666666664" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.2817443351859769" />
+        <entry key="app/src/main/res/menu/nav_drawer.xml" value="0.28088926891834115" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2225" />
       </map>
     </option>
   </component>

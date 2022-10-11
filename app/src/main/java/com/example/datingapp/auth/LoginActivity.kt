@@ -2,6 +2,7 @@ package com.example.datingapp.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -114,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("users").child(number)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    //Log.d("LoginActivity checkUser", "onDataChange: "+snapshot.exists())
                     if (snapshot.exists()) {
                         dialog.dismiss()
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
