@@ -2,12 +2,11 @@ package com.example.datingapp.auth
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.example.datingapp.MainActivity
-import com.example.datingapp.R
 import com.example.datingapp.databinding.ActivityRegisterBinding
 import com.example.datingapp.model.UserModel
 import com.example.utils.Config
@@ -19,6 +18,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private var imageUri : Uri?=null
+    private var number:String?=null
     private val selectImage = registerForActivityResult(ActivityResultContracts.GetContent()){
         imageUri = it
         binding.userImageUpload.setImageURI(imageUri)
@@ -33,6 +33,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun init(){
 
+        val intent = intent
+        number = intent.getStringExtra("number")
 
         binding.userImageUpload.setOnClickListener {
             selectImage.launch("image/*")
@@ -84,7 +86,8 @@ class RegisterActivity : AppCompatActivity() {
             name = binding.userName.text.toString(),
             email = binding.userEmail.text.toString(),
             city = binding.userCity.text.toString(),
-            image = imageUrl.toString()
+            image = imageUrl.toString(),
+            number = number
         )
 
         FirebaseDatabase.getInstance().getReference("users")
