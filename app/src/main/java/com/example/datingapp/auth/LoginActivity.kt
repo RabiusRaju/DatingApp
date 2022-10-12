@@ -160,7 +160,9 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     } else {
-                        startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+                        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                        intent.putExtra("number",number)
+                        startActivity(intent)
                         finish()
                     }
                 }
