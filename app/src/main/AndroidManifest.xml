@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.datingapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DatingApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.EditProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.SplashScreenActivity"
             android:exported="true">
@@ -34,9 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

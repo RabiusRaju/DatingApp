@@ -1,10 +1,12 @@
 package com.example.datingapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.datingapp.activity.MessageActivity
 import com.example.datingapp.databinding.ItemUserLayoutBinding
 import com.example.datingapp.model.UserModel
 
@@ -26,6 +28,11 @@ class DatingAdapter(
         holder.binding.tvName.text = list[position].name
         holder.binding.tvEmail.text = list[position].email
         Glide.with(context).load(list[position].image).into(holder.binding.userImage)
+        holder.binding.ivChat.setOnClickListener {
+            val intent = Intent(context,MessageActivity::class.java)
+            intent.putExtra("userId",list[position].number)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = list.size

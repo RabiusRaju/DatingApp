@@ -155,8 +155,8 @@ class LoginActivity : AppCompatActivity() {
         FirebaseDatabase.getInstance().getReference("users").orderByChild("number").equalTo(number)
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+                    Config.hideDialog()
                     if (snapshot.exists()) {
-                        Config.hideDialog()
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                         finish()
                     } else {

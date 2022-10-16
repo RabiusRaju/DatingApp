@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+
             R.id.favorite->{
                 Toast.makeText(this, "favorite", Toast.LENGTH_SHORT).show()
             }

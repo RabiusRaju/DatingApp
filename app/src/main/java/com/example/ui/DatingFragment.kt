@@ -12,6 +12,8 @@ import com.example.datingapp.R
 import com.example.datingapp.adapter.DatingAdapter
 import com.example.datingapp.databinding.FragmentDatingBinding
 import com.example.datingapp.model.UserModel
+import com.example.utils.Config
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,8 +26,7 @@ class DatingFragment : Fragment() {
 
 
     private lateinit var binding: FragmentDatingBinding
-    private lateinit var manager : CardStackLayoutManager
-    private lateinit var list : ArrayList<UserModel>
+    private lateinit var manager: CardStackLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,14 +38,14 @@ class DatingFragment : Fragment() {
         return binding.root
     }
 
-    private fun cardStack(){
-        manager = CardStackLayoutManager(requireContext(),object : CardStackListener{
+    private fun cardStack() {
+        manager = CardStackLayoutManager(requireContext(), object : CardStackListener {
             override fun onCardDragging(direction: Direction?, ratio: Float) {
 
             }
 
             override fun onCardSwiped(direction: Direction?) {
-                if (manager!!.topPosition == list.size){
+                if (manager!!.topPosition == list!!.size) {
                     Toast.makeText(requireContext(), "This is last card", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -75,28 +76,38 @@ class DatingFragment : Fragment() {
     }
 
 
+    private fun init() {
+        fetchData()
+    }
 
-    private fun init(){
+    companion object{
+        var list: ArrayList<UserModel>?=null
+    }
 
 
+
+    private fun fetchData() {
+        Config.showDialog(requireContext())
         FirebaseDatabase.getInstance().getReference("users")
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Log.d("SHUBH", "onDataChange: ${snapshot.toString()}")
-
-                    if(snapshot.exists()){
-                         list = arrayListOf()
-                        for(data in snapshot.children){
+                    Config.hideDialog()
+                    if (snapshot.exists()) {
+                        list = arrayListOf()
+                        for (data in snapshot.children) {
                             val model = data.getValue(UserModel::class.java)
-                            list.add(model!!)
+                            if (model!!.number != FirebaseAuth.getInstance().currentUser!!.phoneNumber){
+                                list!!.add(model)
+                            }
                         }
-                        list.shuffle()
+                        list!!.shuffle()
                         cardStack()
                         binding.cardStackView.layoutManager = manager
                         binding.cardStackView.itemAnimator = DefaultItemAnimator()
-                        binding.cardStackView.adapter = DatingAdapter(requireContext(),list)
-                    }else{
-                        Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+                        binding.cardStackView.adapter = DatingAdapter(requireContext(), list!!)
+                    } else {
+                        Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT)
+                            .show()
 
                     }
                 }
@@ -106,6 +117,7 @@ class DatingFragment : Fragment() {
                 }
 
             })
+
     }
 
 }
