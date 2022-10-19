@@ -41,6 +41,18 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <service
+            android:name="com.example.utils.MyFirebaseMessagingService"
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.Send">
+
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.android.c2dm.intent.Reciever"/>
+            </intent-filter>
+
+        </service>
     </application>
 
 </manifest>
