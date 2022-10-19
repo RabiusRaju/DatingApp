@@ -87,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
             email = binding.userEmail.text.toString(),
             city = binding.userCity.text.toString(),
             image = imageUrl.toString(),
-            number = number
+            number = "+88$number"
         )
 
         FirebaseDatabase.getInstance().getReference("users")

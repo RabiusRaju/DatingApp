@@ -31,6 +31,7 @@ class DatingAdapter(
         holder.binding.ivChat.setOnClickListener {
             val intent = Intent(context,MessageActivity::class.java)
             intent.putExtra("userId",list[position].number)
+            intent.putExtra("userId",list[position].number)
             context.startActivity(intent)
         }
     }

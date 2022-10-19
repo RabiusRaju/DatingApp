@@ -152,7 +152,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkUserExist(number: String) {
-        FirebaseDatabase.getInstance().getReference("users").orderByChild("number").equalTo(number)
+        FirebaseDatabase.getInstance().getReference("users").orderByChild("number").equalTo("+88$number")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     Config.hideDialog()
